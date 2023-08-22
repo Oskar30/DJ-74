@@ -2,25 +2,25 @@
 
 @baseUrl = http://localhost:8000/api/v1
 
-# создание продукта
+# создание продукта 1
 POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор",
-  "description": "Лучшие помидоры на рынке"
+  "title": "томатос",
+  "description": "томатос он же помидор"
 }
 
 ###
 
-# получение продуктов
+# получение продуктов 2
 GET {{baseUrl}}/products/
 Content-Type: application/json
 
 ###
 
-# обновление продукта
-PATCH {{baseUrl}}/products/1/
+# обновление продукта 3
+PATCH {{baseUrl}}/products/2/
 Content-Type: application/json
 
 {
@@ -29,13 +29,13 @@ Content-Type: application/json
 
 ###
 
-# удаление продукта
-DELETE {{baseUrl}}/products/1/
+# удаление продукта 4
+DELETE {{baseUrl}}/products/4/
 Content-Type: application/json
 
 ###
 
-# поиск продуктов по названию и описанию
+# поиск продуктов по названию и описанию 5
 GET {{baseUrl}}/products/?search=помидор
 Content-Type: application/json
 
