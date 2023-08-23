@@ -7,8 +7,8 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "томатос",
-  "description": "томатос он же помидор"
+  "title": "peпа",
+  "description": "peпа"
 }
 
 ###
@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 # обновление продукта 3
-PATCH {{baseUrl}}/products/2/
+PATCH {{baseUrl}}/products/8/
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 # удаление продукта 4
-DELETE {{baseUrl}}/products/4/
+DELETE {{baseUrl}}/products/10/
 Content-Type: application/json
 
 ###
@@ -49,12 +49,12 @@ Content-Type: application/json
   "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
   "positions": [
     {
-      "product": 2,
+      "product": 11,
       "quantity": 250,
       "price": 120.50
     },
     {
-      "product": 3,
+      "product": 12,
       "quantity": 100,
       "price": 180
     }
@@ -64,7 +64,7 @@ Content-Type: application/json
 ###
 
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH {{baseUrl}}/stocks/7/
 Content-Type: application/json
 
 {
@@ -85,5 +85,5 @@ Content-Type: application/json
 ###
 
 # поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?products=2
+GET {{baseUrl}}/stocks/?products=8
 Content-Type: application/json
