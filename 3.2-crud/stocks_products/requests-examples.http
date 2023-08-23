@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-# создание склада
+# создание склада  6
 POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
@@ -63,19 +63,19 @@ Content-Type: application/json
 
 ###
 
-# обновляем записи на складе
-PATCH {{baseUrl}}/stocks/7/
+# обновляем записи на складе 7
+PATCH {{baseUrl}}/stocks/4/
 Content-Type: application/json
 
 {
   "positions": [
     {
-      "product": 2,
+      "product": 11,
       "quantity": 100,
       "price": 130.80
     },
     {
-      "product": 3,
+      "product": 12, 
       "quantity": 243,
       "price": 145
     }
@@ -84,6 +84,6 @@ Content-Type: application/json
 
 ###
 
-# поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?products=8
+# поиск складов, где есть определенный продукт  8
+GET {{baseUrl}}/stocks/?products=11
 Content-Type: application/json
