@@ -23,12 +23,17 @@ def students_factory():
     return factory
 
 
+@pytest.fixture
+def last_id():
+    return Course.objects.last()
+
+
 
 @pytest.mark.django_db
 def test_first_course(client, courses_factory):
     courses_factory(_quantity=1)                        #id 1
-    response = client.get('/api/v1/courses/1/')
-    #data = response.json()
+    id_course = Course.objects.first().id
+    response = client.get(f'/api/v1/courses/{id_course}/')
     assert response.status_code == 200
     assert Course.objects.all()[0].pk == 1
 
@@ -45,17 +50,17 @@ def test_list_courses(client, courses_factory):
 
 @pytest.mark.django_db
 def test_filter_id(client, courses_factory):
-    quantity = 2                                        
+    quantity = 2
     courses_factory(_quantity = quantity)               #id 4-5
-    response = client.get('/api/v1/courses/?id=4')
+    id_course = Course.objects.last().id
+    response = client.get(f'/api/v1/courses/?id={id_course}')
     assert response.status_code == 200
 
 
 @pytest.mark.django_db
 def test_filter_name(client, courses_factory):
     quantity = 2                                        
-    courses_factory(_quantity = quantity)               #id 6-7
-    courses = Course.objects.all()
+    courses = courses_factory(_quantity = quantity)               #id 6-7
     
     for course in courses:
         response = client.get(f'/api/v1/courses/?name={course.name}')
@@ -73,9 +78,10 @@ def test_create_course(client):
     
 
 @pytest.mark.django_db
-def test_patch_course(client, courses_factory):
+def test_patch_course(client, courses_factory, last_id):
     courses_factory(_quantity = 1)                                      #id 9
-    response = client.patch('/api/v1/courses/9/', data={"name":"new"})
+    id_course = Course.objects.last().id
+    response = client.patch(f'/api/v1/courses/{id_course}/', data={"name":"new"})
     assert response.status_code == 200
     assert response.data["name"] == "new"
 
@@ -83,8 +89,9 @@ def test_patch_course(client, courses_factory):
 @pytest.mark.django_db
 def test_delete_course(client, courses_factory):
     courses_factory(_quantity = 1)                         #id 10
+    id_course = Course.objects.last().id
     count = Course.objects.count()
-    response = client.delete('/api/v1/courses/10/')
+    response = client.delete(f'/api/v1/courses/{id_course}/')
     assert response.status_code == 204
     assert Course.objects.count() == count - 1
     assert response.data == None
