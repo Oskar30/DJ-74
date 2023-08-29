@@ -7,8 +7,8 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "peпа",
-  "description": "peпа"
+  "title": "морковь",
+  "description": "морковь"
 }
 
 ###
@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 # обновление продукта 3
-PATCH {{baseUrl}}/products/8/
+PATCH {{baseUrl}}/products/11/
 Content-Type: application/json
 
 {
