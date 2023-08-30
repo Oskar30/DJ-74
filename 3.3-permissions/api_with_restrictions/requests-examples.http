@@ -21,18 +21,18 @@ Authorization: Token 81259d04913e103adce60575b7800a9ad674e10b
 ###
 
 # попытка поменять объявление 3
-PATCH {{baseUrl}}/advertisements/1/
+PATCH {{baseUrl}}/advertisements/2/
 Content-Type: application/json
 Authorization: Token 81259d04913e103adce60575b7800a9ad674e10b
 
 {
-  "status": "CLOSED"
+  "status": "OPEN" 
 }
 
 ###
 
 # фильтрация по создателю
-GET {{baseUrl}}/advertisements/?creator=2
+GET {{baseUrl}}/advertisements/?creator=1
 Content-Type: application/json
 
 ###
